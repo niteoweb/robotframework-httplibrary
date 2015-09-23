@@ -74,6 +74,10 @@ mostly a wrapper supposed to have a nice API)!
 Changelog
 ---------
 
+**v0.4.3**
+
+- Added Python 3.4 support. [zupo]
+
 **v0.4.2**
 
 - Don't enforce ASCII when converting to JSON (so chinese characters are

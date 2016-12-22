@@ -77,6 +77,7 @@ Changelog
 **v0.4.3**
 
 - Added Python 3.4 support. [zupo]
+- Added Python 3.5 support. [karantan]
 
 **v0.4.2**
 

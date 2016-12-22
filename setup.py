@@ -6,7 +6,7 @@ from distutils.core import setup
 CLASSIFIERS = """
 Programming Language :: Python
 Programming Language :: Python :: 2.7
-Programming Language :: Python :: 3.4
+Programming Language :: Python :: 3.5
 Topic :: Software Development :: Testing
 """[1:-1]
 
@@ -18,7 +18,8 @@ PY3 = sys.version_info[0] == 3
 install_requires = [
     'webtest>=2.0',
     'jsonpatch',
-    'jsonpointer'
+    'jsonpointer',
+    'future',
 ]
 
 if PY3:
@@ -28,7 +29,7 @@ else:
 
 setup(
     name='robotframework-httplibrary',
-    version="0.4.2",
+    version="0.4.2-beta.1",
     description='Robot Framework keywords for HTTP requests',
     long_description=long_description,
     author='Filip Noetzel',

@@ -1,10 +1,13 @@
+from future.standard_library import install_aliases
+install_aliases()
+
 from robot.api import logger
 
 from base64 import b64encode
 from functools import wraps
-from urlparse import urlparse
+from urllib.parse import urlparse
 
-import livetest
+from . import livetest
 import json
 import jsonpointer
 import jsonpatch
@@ -12,9 +15,10 @@ import jsonpatch
 
 def load_json(json_string):
     try:
-        return json.loads(json_string)
-    except ValueError, e:
-        raise ValueError("Could not parse '%s' as JSON: %s" % (json_string, e))
+        return json.loads(json_string.decode())
+    except ValueError as e:
+        raise ValueError("Could not parse '%s' as JSON: %s" % (
+            json_string.decode(), e))
 
 
 def _with_json(f):
@@ -548,7 +552,7 @@ class HTTP:
 
         try:
             return json.dumps(data, ensure_ascii=False)
-        except ValueError, e:
+        except ValueError as e:
             raise ValueError(
                 "Could not stringify '%r' to JSON: %s" % (data, e))
 

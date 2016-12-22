@@ -40,13 +40,14 @@ __version__ = '0.5'
 
 import sys
 import webtest
-import httplib
+from http.client import HTTPConnection
+from http.client import HTTPSConnection
 import urlparse
 from Cookie import BaseCookie, CookieError
 from six.moves import http_cookiejar
 
-conn_classes = {'http': httplib.HTTPConnection,
-                'https': httplib.HTTPSConnection}
+conn_classes = {'http': HTTPConnection,
+                'https': HTTPSConnection}
 
 
 class RequestCookieAdapter(object):
@@ -118,7 +119,7 @@ class TestApp(webtest.TestApp):
 
     def _do_httplib_request(self, req):
         "Convert WebOb Request to httplib request."
-        headers = dict((name, val) for name, val in req.headers.iteritems())
+        headers = dict((name, val) for name, val in req.headers.items())
         if req.scheme not in self.conn:
             self._load_conn(req.scheme)
 
